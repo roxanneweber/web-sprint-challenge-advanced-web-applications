@@ -48,7 +48,11 @@ const View = (props) => {
 		const token = localStorage.getItem('token');
 		// axiosWithAuth()
 		axios
-			.put(`/articles/${article.id}`, article)
+			.put(`/articles/${article.id}`, article, {
+				headers: {
+					authorization: token,
+				},
+			})
 			.then((res) => {
 				setArticles(
 					articles.map((item) => (item.id == article.id ? res : item))
