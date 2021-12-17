@@ -127,17 +127,17 @@ Details.**
 
 ### Route Authentication
 
-- [ ] Build a `PrivateRoute` component within the components folder.
-- [ ] Use the `PrivateRoute` component to build a route rendering `View.js` to
+- [x] Build a `PrivateRoute` component within the components folder.
+- [x] Use the `PrivateRoute` component to build a route rendering `View.js` to
       the path `/view`.
-- [ ] Use the `PrivateRoute` component to build a route rendering `Logout.js` to
+- [x] Use the `PrivateRoute` component to build a route rendering `Logout.js` to
       the path `/logout`.
 
 ### Request Authentication
 
 > _Complete the requests needed to execute all CRUD functions._
 
-- [ ] Build a `axiosWithAuth` module within the utils folder to create an
+- [x] Build a `axiosWithAuth` module within the utils folder to create an
       instance of axios with the authentication header.
 
 - [ ] In `View.js`, complete `handleDelete` so that a http request is made that

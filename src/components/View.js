@@ -3,6 +3,7 @@ import styled from 'styled-components';
 
 import Article from './Article';
 import EditForm from './EditForm';
+import axiosWithAuth from '../utils/axiosWithAuth';
 import axios from 'axios';
 
 const View = (props) => {
@@ -11,13 +12,8 @@ const View = (props) => {
 	const [editId, setEditId] = useState();
 
 	useEffect(() => {
-		const token = localStorage.getItem('token');
-		axios
-			.get('http://localhost:5000/api/articles', {
-				headers: {
-					authorization: token,
-				},
-			})
+		axiosWithAuth()
+			.get('/articles')
 			.then((res) => {
 				setArticles(res.data);
 			})
