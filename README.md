@@ -138,7 +138,8 @@ Details.**
 > _Complete the requests needed to execute all CRUD functions._
 
 - [x] Build a `axiosWithAuth` module within the utils folder to create an
-      instance of axios with the authentication header.
+      instance of axios with the authentication header. --- BUILT BUT NOT
+      WORKING
 
 - [ ] In `View.js`, complete `handleDelete` so that a http request is made that
       deletes the article with the included id. After successfully deleting the
@@ -161,9 +162,10 @@ Details.**
 
 > _Add in the http requests needed to logout of the application._
 
-- [ ] In `Logout.js`, execute a http request to logout on mount. When the
+- [x] In `Logout.js`, execute a http request to logout on mount. When the
       request is complete, the user's security token should be removed and the
-      browser should redirect to the login page.
+      browser should redirect to the login page. --- TOKEN IS BEING REMOVED AND
+      USER IS LOGGED OFF BUT IS NOT REDIRECTING TO LOGIN PAGE FOR SOME REASON
 
 ### Advanced Testing
 
@@ -196,13 +198,13 @@ Details.**
 
 - [x] Submit via Codegrade by commiting and pushing any new changes to **your
       main branch.**
-- [ ] Check Codegrade before the deadline to compare its results against your
+- [x] Check Codegrade before the deadline to compare its results against your
       local tests.
-- [ ] Check Codegrade on the days following the Sprint Challenge for reviewer
+- [x] Check Codegrade on the days following the Sprint Challenge for reviewer
       feedback. For more information on how to access and read your feedback,
       check
       [here](https://www.notion.so/lambdaschool/How-to-View-Feedback-in-CodeGrade-c5147cee220c4044a25de28bcb6bb54a)
-- [ ] New commits will be evaluated by Codegrade if pushed before the sprint
+- [x] New commits will be evaluated by Codegrade if pushed before the sprint
       challenge deadline.
 
 ## Interview Questions
@@ -210,11 +212,20 @@ Details.**
 Be prepared to demonstrate your understanding of this week's concepts by
 answering questions on the following topics. Add your answers below.
 
-1. Explain what a token is used for.
+1. Explain what a token is used for. Tokens are stored to be used as a
+   credential for accessing pages and information that requires a user to be
+   authenticated before the data or pages can be viewed.
 
-2. What steps can you take in your web apps to keep your data secure?
+2. What steps can you take in your web apps to keep your data secure? Use
+   private routes to ensure that authentization is required BEFORE a user can
+   access a page
 
-3. Describe how web servers work.
+3. Describe how web servers work. Web Servers are simple computer programs that
+   send a web page to a browser when it is requested using the web client
+   (browser, FTP, etc). These programs are run on machines that are dubbed a
+   'server'. 'Web server' and 'server' are typically the same thing.
 
 4. Which HTTP methods can be mapped to the CRUD acronym that we use when
-   interfacing with APIs/Servers.
+   interfacing with APIs/Servers. Create = PUT with a new URI, OR POST to a base
+   URI returning a newly created URI Read = GET Update = PUT with an existing
+   URI Delete = DELETE

@@ -12,8 +12,15 @@ const View = (props) => {
 	const [editId, setEditId] = useState();
 
 	useEffect(() => {
-		axiosWithAuth()
-			.get('/articles')
+		const token = localStorage.getItem('token');
+		// axiosWithAuth()
+		axios
+			// .get('/articles')
+			.get('http://localhost:5000/api/articles', {
+				headers: {
+					authorization: token,
+				},
+			})
 			.then((res) => {
 				setArticles(res.data);
 			})
