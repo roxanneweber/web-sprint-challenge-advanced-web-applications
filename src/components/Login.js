@@ -1,7 +1,21 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 
 const Login = () => {
+	const [cred, setCred] = useState({
+		username: '',
+		password: '',
+	});
+
+	const handleChange = (e) => {
+		setCred({
+			...cred,
+			[e.target.name]: e.target.value,
+		});
+	};
+
+	console.log(cred);
+
 	return (
 		<ComponentContainer>
 			<ModalContainer>
@@ -10,12 +24,17 @@ const Login = () => {
 				<form>
 					<div>
 						<label htmlFor="username">Username</label>
-						<input id="username" />
+						<input id="username" name="username" onChange={handleChange} />
 					</div>
 
 					<div>
 						<label htmlFor="password">Password</label>
-						<input id="password" type="password" />
+						<input
+							id="password"
+							name="password"
+							onChange={handleChange}
+							type="password"
+						/>
 					</div>
 					<br />
 					<button id="submit" name="Submit">
