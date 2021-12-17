@@ -30,19 +30,29 @@ const View = (props) => {
 	}, []);
 
 	const handleDelete = (id) => {
-		axiosWithAuth()
-			.delete(`/articles/${id}`)
-			.then((resp) => {
-				setArticles(resp.data);
+		const token = localStorage.getItem('token');
+		// axiosWithAuth()
+		axios
+			.delete(`http://localhost:5000/api/articles/${id}`, {
+				headers: {
+					authorization: token,
+				},
+			})
+			.then((res) => {
+				setArticles(res.data);
 			})
 			.catch((err) => console.log(err));
 	};
 
 	const handleEdit = (article) => {
-		axiosWithAuth()
+		const token = localStorage.getItem('token');
+		// axiosWithAuth()
+		axios
 			.put(`/articles/${article.id}`, article)
-			.then((resp) => {
-				// setArticles(articles.map(item => item.id == article.id?resp:item))
+			.then((res) => {
+				setArticles(
+					articles.map((item) => (item.id == article.id ? res : item))
+				);
 				setEditing(false);
 			})
 			.catch((err) => console.log(err));
