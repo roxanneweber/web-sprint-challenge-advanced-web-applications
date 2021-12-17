@@ -19,7 +19,7 @@ const View = (props) => {
 				},
 			})
 			.then((res) => {
-				console.log(res);
+				setArticles(res.data);
 			})
 			.catch((err) => {
 				console.log(err);
