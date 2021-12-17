@@ -1,7 +1,6 @@
-import axios from 'axios';
 import React, { useState, useEffect } from 'react';
-import { useParams, useHistory } from 'react-router-dom';
 import styled from 'styled-components';
+import axiosWithAuth from '../utils/axiosWithAuth';
 
 const initialArticle = {
 	id: '',
@@ -16,28 +15,13 @@ const EditForm = (props) => {
 	const { handleEdit, handleEditCancel, editId } = props;
 
 	useEffect(() => {
-		const token = localStorage.getItem('token');
-		axios
-			.get(
-				`http://localhost:5000/api/articles/:${editId}`,
-				{},
-				{
-					headers: {
-						authorization: token,
-					},
-				}
-			)
-			.then((res) => {
-				console.log(res.data);
+		axiosWithAuth()
+			.get(`/articles/${editId}`)
+			.then((resp) => {
+				setArticle(resp.data);
 			})
-			.catch((err) => {
-				console.log(err);
-			});
-	}, []);
-	const { push } = useHistory();
-	// const { id } = useParams();
-
-	console.log('current id: ', editId);
+			.catch((err) => console.log(err));
+	}, [editId]);
 
 	const handleChange = (e) => {
 		setArticle({
