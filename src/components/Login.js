@@ -1,7 +1,11 @@
 import React, { useState, useEffect } from 'react';
+import { useHistory } from 'react-router-dom';
 import styled from 'styled-components';
+import axios from 'axios';
 
 const Login = () => {
+	const { push } = useHistory();
+
 	const [cred, setCred] = useState({
 		username: '',
 		password: '',
@@ -14,14 +18,25 @@ const Login = () => {
 		});
 	};
 
-	console.log(cred);
+	const handleSubmit = (e) => {
+		e.preventDefault();
+		axios
+			.post('http://localhost:5000/api/login', cred)
+			.then((res) => {
+				localStorage.setItem('token', res.data.payload);
+				push('/view');
+			})
+			.catch((err) => {
+				console.log(err);
+			});
+	};
 
 	return (
 		<ComponentContainer>
 			<ModalContainer>
 				<h1>Welcome to Blogger Pro</h1>
 				<h2>Please enter your account information.</h2>
-				<form>
+				<form onSubmit={handleSubmit}>
 					<div>
 						<label htmlFor="username">Username</label>
 						<input id="username" name="username" onChange={handleChange} />
