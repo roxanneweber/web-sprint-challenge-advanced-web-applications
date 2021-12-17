@@ -18,7 +18,7 @@ const App = () => {
 				<BloomHeader />
 				<Header />
 				<RouteContainer>
-					<Route path="/view/edit/:id">
+					<Route exact path="/view/edit/:id">
 						<EditForm />
 					</Route>
 					<Route exact path="/">
