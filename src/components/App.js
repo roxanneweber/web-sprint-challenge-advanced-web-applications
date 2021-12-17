@@ -27,7 +27,6 @@ const App = () => {
 					<Route exact path="/logout">
 						<Logout />
 					</Route>
-					'
 				</RouteContainer>
 			</AppContainer>
 		</Router>
